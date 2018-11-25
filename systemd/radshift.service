@@ -1,0 +1,11 @@
+[Unit]
+Description=Changes color temperature based on system time
+Documentation=https://github.com/tronje/radshift
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/radshift --continuous
+Restart=always
+
+[Install]
+WantedBy=default.target
