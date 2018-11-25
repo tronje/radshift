@@ -35,9 +35,19 @@ static void print_help(FILE *io)
 
 static int set_temperature(int temperature)
 {
+	int rc;
 	randr_state_t *state;
-	randr_init(&state);
-	randr_start(state);
+	rc = randr_init(&state);
+	if (rc != 0) {
+		fprintf(stderr, "Failed to init randr!\n");
+		return rc;
+	}
+
+	rc = randr_start(state);
+	if (rc != 0) {
+		fprintf(stderr, "Failed to start randr!\n");
+		return rc;
+	}
 
 	color_setting_t cs = {
 		.temperature = temperature,
@@ -45,7 +55,7 @@ static int set_temperature(int temperature)
 		.brightness = 1.0
 	};
 
-	int rc = randr_set_temperature(state, &cs, 0);
+	rc = randr_set_temperature(state, &cs, 0);
 	if (rc != 0) {
 		fprintf(stderr, "Failed to set temperature!\n");
 	} else {
@@ -70,9 +80,9 @@ static int auto_set()
 		temperature = NIGHT_TEMPERATURE;
 	}
 
-	set_temperature(temperature);
+	int rc = set_temperature(temperature);
 
-	return 0;
+	return rc;
 }
 
 static int run_continuously()
@@ -82,8 +92,9 @@ static int run_continuously()
 	while (true) {
 		rc = auto_set();
 		if (rc != 0) {
-			fprintf(stderr, "set_temperature() failed! Exiting...");
-			return rc;
+			fprintf(stderr, "set_temperature() failed!\n");
+			fprintf(stderr, "Will try again in %d seconds.\n",
+					CONTINUOUS_INTERVAL);
 		}
 
 		rc = sleep(CONTINUOUS_INTERVAL);
