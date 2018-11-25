@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <stdbool.h>
 
 #include "gamma-randr.h"
@@ -77,7 +78,6 @@ static int auto_set()
 static int run_continuously()
 {
 	int rc;
-	struct timespec sleep_time = { .tv_sec = 1800, .tv_nsec = 0 };
 
 	while (true) {
 		rc = auto_set();
@@ -86,7 +86,11 @@ static int run_continuously()
 			return rc;
 		}
 
-		nanosleep(&sleep_time, NULL);
+		rc = sleep(CONTINUOUS_INTERVAL);
+		if (rc != 0) {
+			fprintf(stderr, "sleep() failed! Exiting...");
+			return rc;
+		}
 	}
 
 	return 0;
