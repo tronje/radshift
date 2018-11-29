@@ -24,7 +24,7 @@ You may, however, want to:
 * edit `include/config.h` to set your preferred times and temperatures.
   There's planned support for a config file and environment variables.
 * edit `Makefile` to set the install-prefix (and any compilation options you want).
-  You can also build with `make INSTALL_PREFIX=/path/to/radshift/binary`.
+  You can also install with `make INSTALL_PREFIX=/path/to/radshift/binary install`.
 * edit `systemd/radshift.service` to your liking.
 
 ## Installation
