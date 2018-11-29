@@ -13,15 +13,29 @@ works on Linux, macOS, and Windows. Radshift provides only one method, and
 only works on Linux.
 Redshift is over 6000 lines of C code, Radshift less than 1000 lines of C code.
 
+## Configuration
+
+All configuration is optional. Defaults are already set, and radshift should
+compile and work without any changes.
+You may, however, want to:
+
+* edit `include/config.h` to set your preferred times and temperatures.
+  There's planned support for a config file and environment variables.
+* edit `Makefile` to set the install-prefix (and any compilation options you want).
+  You can also build with `make INSTALL_PREFIX=/path/to/radshift/binary`.
+* edit `systemd/radshift.service` to your liking.
+
 ## Installation
 
-1. (optional) Edit `include/radshift.h` to your liking - sane defaults are already set.
-2. (optional) Edit `Makefile` to your liking - per default, Radshift is installed to `/usr/bin/radshift`.
-3. `make && sudo make install`
-4. (optional) Copy `systemd/radshift.service` to your Systemd User services location,
-   e.g. `~/.config/systemd/user/`, and edit to your liking.
-5. (optional) `systemctl --user enable radshift.service`
-6. (optional) `systemctl --user start radshift.service`
+These are the suggested steps to install radshift:
+
+1. `make && sudo make install`
+2. (optional) `cp systemd/radshift.service ~/.config/systemd/user/`
+3. (optional) `systemctl --user enable radshift.service`
+4. (optional) `systemctl --user start radshift.service`
+
+You may also skip the `sudo make install` step, and simply set radshift's
+location in the `.service` file.
 
 ## Usage
 
