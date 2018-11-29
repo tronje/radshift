@@ -1,5 +1,7 @@
 # Radshift
 
+[![Build Status](https://travis-ci.org/tronje/radshift.svg?branch=master)](https://travis-ci.org/tronje/radshift)
+
 Radshift is a fork of Redshift, with most of its functionality ripped out.
 
 ## Why?
