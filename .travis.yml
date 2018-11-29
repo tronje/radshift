@@ -1,9 +1,13 @@
 language: C
-script: make debug
 
-compiler:
-    - gcc
-    - clang
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - gcc-7
+
+script: make CC=gcc-7 debug
 
 git:
     depth: 1
