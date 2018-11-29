@@ -1,0 +1,15 @@
+language: C
+script: make debug
+
+compiler:
+    - gcc
+    - clang
+
+git:
+    depth: 1
+    quiet: true
+
+notifications:
+    email:
+        on_success: never
+        on_failure: always
