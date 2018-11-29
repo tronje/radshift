@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 
+#include "config.h"
 #include "gamma-randr.h"
 
 static void print_help(FILE *io)
@@ -74,9 +75,9 @@ static int auto_set()
 	int hour = local_time->tm_hour;
 	int temperature = NEUTRAL_TEMPERATURE;
 
-	if (hour >= 20 && hour < 22) {
+	if (hour >= EVENING_START && hour < NIGHT_START) {
 		temperature = EVENING_TEMPERATURE;
-	} else if (hour >= 22 || hour < 7) {
+	} else if (hour >= NIGHT_START || hour < DAY_START) {
 		temperature = NIGHT_TEMPERATURE;
 	}
 
