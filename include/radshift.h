@@ -8,4 +8,4 @@ typedef struct {
 	float brightness;
 } color_setting_t;
 
-#endif // RADSHIFT_H
+#endif /* RADSHIFT_H */
