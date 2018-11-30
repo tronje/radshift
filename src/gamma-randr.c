@@ -264,9 +264,8 @@ void randr_free(randr_state_t *state)
 }
 
 static int
-randr_set_temperature_for_crtc(
-	randr_state_t *state, unsigned int crtc_num, const color_setting_t *setting,
-	int preserve)
+randr_set_temperature_for_crtc(randr_state_t *state, unsigned int crtc_num,
+				const color_setting_t *setting,	int preserve)
 {
 	xcb_generic_error_t *error;
 

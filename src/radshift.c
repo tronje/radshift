@@ -10,28 +10,31 @@
 
 static void print_help(FILE *io)
 {
-	fprintf(io, "Sets the temperature of the screen.\n"
-				"Usage:\n"
-				"  radshift --help         Print this help\n"
-				"  radshift --auto         Automatically determine appropriate"
-				" temperature and set it\n"
-				"  radshift --continuous   Like --auto, but looped, executing"
-				" like --auto every 30 minutes\n"
-				"  radshift <temperature>  Set the screen temperature\n"
-				"\n"
-				"`temperature` should be between 2000 and 10000."
-				" It is measured in Kelvin.\n"
-				"A sensible night-time temperature is 4500K.\n"
-				"A sensible daytime/neutral temperature is 6500K, which leaves"
-				" the screen temperature unchanged.\n"
-				"A higher temperature will increase the blue light, and a"
-				" lower temperature the red.\n"
-				"\n"
-				"Radshift is a fork of Redshift. Redshift was written by"
-				" John Lund Steffensen.\n"
-				"Radshift and Redshift are licensed under the GNU General"
-				" Public License, version 3.\n"
-				"Redshift copyright is held by John Lund Steffensen.\n");
+	fprintf(
+		io,
+		"Sets the temperature of the screen.\n"
+		"Usage:\n"
+		"  radshift --help         Print this help\n"
+		"  radshift --auto         Automatically determine appropriate"
+		" temperature and set it\n"
+		"  radshift --continuous   Like --auto, but looped, executing"
+		" like --auto every 30 minutes\n"
+		"  radshift <temperature>  Set the screen temperature\n"
+		"\n"
+		"`temperature` should be between 2000 and 10000."
+		" It is measured in Kelvin.\n"
+		"A sensible night-time temperature is 4500K.\n"
+		"A sensible daytime/neutral temperature is 6500K, which leaves"
+		" the screen temperature unchanged.\n"
+		"A higher temperature will increase the blue light, and a"
+		" lower temperature the red.\n"
+		"\n"
+		"Radshift is a fork of Redshift. Redshift was written by"
+		" John Lund Steffensen.\n"
+		"Radshift and Redshift are licensed under the GNU General"
+		" Public License, version 3.\n"
+		"Redshift copyright is held by John Lund Steffensen.\n"
+	);
 }
 
 static int set_temperature(int temperature)
@@ -60,7 +63,8 @@ static int set_temperature(int temperature)
 	if (rc != 0) {
 		fprintf(stderr, "Failed to set temperature!\n");
 	} else {
-		fprintf(stderr, "Set screen temperature to %dK.\n", temperature);
+		fprintf(stderr, "Set screen temperature to %dK.\n",
+				temperature);
 	}
 
 	randr_free(state);
