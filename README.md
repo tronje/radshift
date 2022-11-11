@@ -29,6 +29,8 @@ You may, however, want to:
 
 ## Installation
 
+You need to have `ibxcb-randr0-dev` installed if you are using Ubuntu.
+
 These are the suggested steps to install radshift:
 
 1. `make && sudo make install`
