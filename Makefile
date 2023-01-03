@@ -2,7 +2,7 @@
 NAME = radshift
 
 # installation
-INSTALL_PREFIX = /usr/bin
+INSTALL_PREFIX = /usr/local/bin
 
 # directories
 SRC_DIR = src
@@ -13,8 +13,8 @@ RELEASE_TARGET_DIR = $(BUILD_DIR)/release
 
 # compilation
 CC = cc
-CFLAGS = -Wall -Wextra -Wpedantic -Iinclude
-LIBS = -lm -lxcb -lxcb-randr
+CFLAGS = -Wall -Wextra -Wpedantic -Iinclude -I/usr/X11R6/include
+LIBS = -lm -lxcb -lxcb-randr -L/usr/X11R6/lib
 
 # debug mode
 DBFLAGS = -Werror -Wshadow -Wstrict-overflow -fno-strict-aliasing -g -Og -DDEBUG
