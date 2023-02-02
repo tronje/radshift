@@ -140,7 +140,7 @@ int main(int argc, char **argv)
 	} else {
 		int temperature = atoi(argv[1]);
 		if (temperature < 2000 || temperature >= 10000) {
-			fprintf(stderr, "Using absurd temperature, aborting!");
+			fprintf(stderr, "Using absurd temperature, aborting!\n");
 			return EXIT_FAILURE;
 		}
 		rc = set_temperature(temperature);
