@@ -126,6 +126,13 @@ int main(int argc, char **argv)
 
 	int rc;
 
+#ifdef __OpenBSD__
+	if (pledge("stdio rpath unix", NULL) == -1) {
+		fprintf(stderr, "pledge\n");
+		return EXIT_FAILURE;
+	}
+#endif /* __OpenBSD__ */
+
 	if (strcmp(argv[1], "--auto") == 0) {
 		rc = auto_set();
 	} else if (strcmp(argv[1], "--continuous") == 0) {
