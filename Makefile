@@ -12,7 +12,7 @@ TARGET_DIR = $(BUILD_DIR)/debug
 RELEASE_TARGET_DIR = $(BUILD_DIR)/release
 
 # compilation
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Wpedantic -Iinclude
 LIBS = -lm -lxcb -lxcb-randr
 
