@@ -67,7 +67,7 @@ $(RELEASE_TARGET): $(RELEASE_OBJECTS)
 
 .PHONY: install
 install: release
-	install $(RELEASE_TARGET) $(INSTALL_PREFIX)/$(NAME)
+	install -m 0755 $(RELEASE_TARGET) $(INSTALL_PREFIX)/$(NAME)
 
 .PHONY: help
 help:
