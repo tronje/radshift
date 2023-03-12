@@ -66,12 +66,8 @@ $(RELEASE_TARGET): $(RELEASE_OBJECTS)
 	$(CC) $(CFLAGS) $(RELEASE_OBJECTS) $(LIBS) -o $@
 
 .PHONY: install
-install:
-	cp $(RELEASE_TARGET) $(INSTALL_PREFIX)/$(NAME)
-
-.PHONY: uninstall
-uninstall:
-	rm $(INSTALL_PREFIX)/$(NAME)
+install: release
+	install $(RELEASE_TARGET) $(INSTALL_PREFIX)/$(NAME)
 
 .PHONY: help
 help:
@@ -80,7 +76,7 @@ help:
 	@echo "Targets:"
 	@echo "'debug'          build executable in debug mode"
 	@echo "'release'        build executable in release mode (default)"
-	@echo "'init'           create required directories"
+	@echo "'install'        install binary to RELEASE_DIR (default = /usr/bin/)"
 	@echo "'clean'          remove generated binary files"
 	@echo "'help'           print this help"
 
